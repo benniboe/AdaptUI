@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdaptiveMenu Stats</title>
+    <style>
+        body {
+            width: 350px;
+            min-height: 200px;
+            padding: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .stats-section {
+            margin: 20px 0;
+        }
+        
+        .stats-section h3 {
+            color: #34495e;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        #statsContainer {
+            margin: 15px 0;
+        }
+        
+        .stat-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        
+        .stat-item:hover {
+            transform: translateX(5px);
+            background: linear-gradient(to right, #e9ecef, #dee2e6);
+        }
+        
+        .page-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .click-count {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 30px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .no-data-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        #resetBtn {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        #resetBtn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+        }
+        
+        #exportBtn {
+            background: #3498db;
+            color: white;
+        }
+        
+        #exportBtn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .info-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #856404;
+        }
+        
+        .total-clicks {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 AdaptiveMenu ML</h2>
+        
+        <!-- Overall Statistics -->
+        <div class="stats-section">
+            <h3>Usage Statistics</h3>
+            <div class="total-clicks" id="totalClicks"></div>
+            <div id="statsContainer">
+                <div class="no-data">
+                    <div class="no-data-icon">📭</div>
+                    <p>No data yet.<br>Start browsing to see statistics!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Time Patterns Section -->
+        <div class="stats-section">
+            <h3>⏰ Time-Based Patterns</h3>
+            <div id="timePatternsContainer">
+                <div class="no-data">
+                    <p>Learning your time-based habits...</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ML Predictions Section -->
+        <div class="stats-section">
+            <h3>🤖 ML Predictions</h3>
+            <div id="mlStatsContainer">
+                <div class="no-data">
+                    <p>Need 15+ clicks to train neural network</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button id="exportBtn" title="Export data as JSON">📥 Export</button>
+            <button id="resetBtn" title="Clear all data">🔄 Reset</button>
+        </div>
+        
+        <div class="info-box">
+            💡 <strong>Tip:</strong> The more you browse, the better ML predictions become!
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>

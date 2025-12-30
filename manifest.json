@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "AdaptUI",
+  "version": "2.0.0",
+  "description": "ML-powered adaptive navigation menus",
+  
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  
+  "host_permissions": [
+    "<all_urls>",
+    "file:///*"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>", "file:///*"],
+      "js": [
+        "tf-core.min.js",
+        "tf-backend-cpu.min.js",
+        "tf-layers.min.js",
+        "ml-predictor.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AdaptUI Stats"
+  },
+  
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
